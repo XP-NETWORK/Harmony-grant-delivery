@@ -1,5 +1,7 @@
 # Harmony Grant Delivery Report
 
+The present report documents integrating Harmony Testnet into XP.network Multi-Chain NFT Bridge.
+
 Harmony is assigned the internal bridge nonce #12:
 ```typescript
 export const HARMONY: Web3Nonce = 0xc;
