@@ -106,6 +106,7 @@ Vewing the transaction in the explorer of the chain of origin (Avalanche):<br/>
 https://testnet.snowtrace.io/tx/0xfd74106bde337d038128b3f6e677dc8d41a95337d01afcb03a9cadddd797faec
 ```
 <br/>
+
 ![15](assets/15.png)
 
 <br/>
