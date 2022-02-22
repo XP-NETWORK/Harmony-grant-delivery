@@ -23,49 +23,70 @@ Creator address: one1p47lggq5qe9pv00a5szz20af76yrhyv8r6e346
 |Minter|0xCbA56d441da86dEfe31d3AdDeEc2bA04f7e27d9e <br/> one1ewjk63qa4pk7lcca8tw7as46qnm7ylv7exqnh3|
 
 ## 1. Sending NFTs
+
 <br/>
+
 **Selecting** an NFT from the list of available:<br/>
 ![1](assets/1.png)
+
 <br/>
 Approving the bridge smart contract as an *operator* of the selected NFT:<br/>
+
 ![2](assets/2.png)
+
 <br/>
 After approval, a user can start sending the selected NFT:<br/>
+
 ![3](assets/3.png)
+
 <br/>
 Signing the Sending transaction and paying the fees:<br/>
+
 ![4](assets/4.png)
 
 ## 2. Viewing the results of the transaction
 <br/>
 Bridge pop-up window notifying the user about success:<br/>
+
 ![5](assets/5.png)
+
 <br/>
 Transaction on the chain of departure (harmony):<br/>
+
 ```
 https://explorer.testnet.harmony.one/tx/0x62b05a8d45e19aea78db50693a22c26fa8fd2192297044c879da5fd80202b160
 ```
+
 <br/>
 Viewing the transaction in the explorer of the chain of NFT origin:<br/>
+
 ![6](assets/6.png)
 
 ## 2. Receiving NFTs
+
 <br/>
 Viewing the transaction on the chain of destination:<br/>
+
 ```
 https://testnet.snowtrace.io/tx/0x3162d691ab8e8b6937ad328d22a7bf7acf1026d37a56a9b1c95d3bfcf081113b
 ```
 ![7](assets/7.png)
+
 <br/>
 NFT is gone from the chain of origin (Harmony):<br/>
+
 ![8](assets/8.png)
+
 <br/>
 Viewing NFTs on the chain of destination (e.g. Avalance):<br/>
+
 ![9](assets/9.png)
 
 ## 3. Returning a wrapped NFT to Harmony
+
 <br/>
 Selecting a wrapped NFT to be sent <br/>
+
 ![10](assets/10.png)
 <br/>
 Approving the bridge contract as an operator of the NFT:<br/>
@@ -86,8 +107,10 @@ https://testnet.snowtrace.io/tx/0xfd74106bde337d038128b3f6e677dc8d41a95337d01afc
 ```
 <br/>
 ![15](assets/15.png)
+
 <br/>
 NFTs are gone from Avalanche:<br/>
+
 ![16](assets/16.png)
 
 ## 4. Receiving Native NFT on Harmony
@@ -96,6 +119,8 @@ NFTs are gone from Avalanche:<br/>
 https://explorer.testnet.harmony.one/tx/0x628a05dc57869ded05977cbf44e48ce442f7524d08c75b525426b4e8e0e152da
 ```
 ![17](assets/17.png)
+
 <br/>
 The NFT has successfully arrived to its native chain:<br/>
+
 ![18](assets/18.png)
