@@ -200,3 +200,183 @@ Transaction on Polygon: [0xe8db8d1dd9a5e08798727727b2e17c4242955a5c9f5285b9aafee
 https://xpnet-whitelisted-api.herokuapp.com/12
 
 https://docs.xp.network/docs/whitelistedv2.0/harmony
+
+# Testing JavaScript Library
+
+### 1. Install the libraries required for the project:
+
+<br/>
+
+```bash
+yarn add xp.network @elrondnetwork/erdjs ethers @taquito/taquito @temple-wallet/dapp
+```
+
+OR
+
+```bash
+npm i --save xp.network @elrondnetwork/erdjs ethers @taquito/taquito @temple-wallet/dapp
+```
+
+To import the latest version of xp.network v.2.0 library:
+
+```bash
+yarn add "git+https://github.com/xp-network/xpjs#bleeding-edge" @elrondnetwork/erdjs ethers @taquito/taquito @temple-wallet/dapp
+```
+
+<br/>
+
+### 2. Import the dependencies<br/><br/>
+
+```javascript
+import {
+    ChainFactoryConfigs,
+    ChainFactory,
+    Chain,
+    AppConfigs,
+    ChainParams
+} from "xp.network";
+
+(async () => {
+    // Instantiate the chain factory for the
+    // Connecting to the mainnnets of all the blockchains:
+    const mainnetConfig = await ChainFactoryConfigs.MainNet()
+    const mainnetFactory: ChainFactory = ChainFactory(
+        AppConfigs.MainNet(),
+        mainnetConfig
+    );
+
+    // Connecting to the testnets of all the blockchains:
+    const testnetConfig = await ChainFactoryConfigs.TestNet();
+    const testnetFactory: ChainFactory = ChainFactory(
+        AppConfigs.TestNet(),
+        testnetConfig
+    );
+
+    // Switching between the mainnets & the testnets:
+    const factory: ChainFactory = mainnetFactory;
+    const CONFIG: Partial<ChainParams> = mainnetConfig;
+})();
+```
+
+<hr/><br/>
+
+## 3. Get the signer objects
+
+### 3.1 Example of getting the signer object (for manual EVM testing in the BE)
+
+Avoid using 3.1 setup in production. Use it for initial or backend testing only.
+<br/>
+
+Add your private key to the environment:
+```bash
+touch .env
+echo "SK=<Replace this with your Private Key>" >> .env
+```
+
+```javascript
+// EVM chains compatible wallet:
+import { Wallet } from "ethers";
+import { config } from 'dotenv';
+config();
+// EVM signer for testing in the BE
+const signer = new Wallet(
+        process.env.SK!,
+        // Replace 'polygonParams'
+        // with the relevant parameter
+        // from the table below
+        CONFIG.polygonParams?.provider
+    );
+```
+
+<center>
+
+|Chain|Parameters|Chain Nonce|
+| :-: | :-: |:-:|
+|  Elrond   |  elrondParams   |2|
+|    BSC    |    bscParams    |4|
+| Ethereum  |  ropstenParams  |5|
+| Avalanche | avalancheParams |6|
+|  Polygon  |  polygonParams  |7|
+|  Fantom   |  fantomParams   |8|
+|   Tron    |   tronParams    |9|
+|  `Harmony`  |  `harmonyParams`  |`12`|
+|   xDai    |   xDaiParams    |14|
+|Algorand|algorandParams|15|
+|Fuse|fuseParams|16|
+|Tezos|tezosParams|18|
+|Velas|velasParams|19|
+|Aurora|auroraParams|21|
+|Godwoken|godwokenParams|22|
+|Gatechain|gatechainParams|23|
+|VeChain|vechainParams|25|
+
+</center><br/>
+
+### 3.2 Example of getting the signer object (in the FE for web3):<br/><br/>
+
+```typescript
+// EVM chains compatible signer:
+import ethers from "ethers";
+const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+```
+
+### 4. Getting the inner objects from this factory to be used for transferring, minting, and estimation of gas fees.<br/><br/>
+
+```javascript
+(async () => {
+// Inner Object ================================ Chain Nonce
+    const bsc       = await factory.inner(Chain.BSC);       // 4
+    const ethereum  = await factory.inner(Chain.ETHEREUM);  // 5
+    const avax      = await factory.inner(Chain.AVALANCHE); // 6
+    const polygon   = await factory.inner(Chain.POLYGON);   // 7
+    const fantom    = await factory.inner(Chain.FANTOM);    // 8
+    const harmony   = await factory.inner(Chain.HARMONY);   // 12 <==========
+    const gnosis    = await factory.inner(Chain.XDAI);      // 14
+    const fuse      = await factory.inner(Chain.FUSE);      // 16
+    const velas     = await factory.inner(Chain.VELAS);     // 19
+    const aurora    = await factory.inner(Chain.AURORA);    // 21
+    const godwoken  = await factory.inner(Chain.GODWOKEN);  // 22
+    const gatechain = await factory.inner(Chain.GATECHAIN); // 23
+    const vechain   = await factory.inner(Chain.VECHAIN);   // 25
+
+    // Non-EVM chains:
+    // Inner Object ================================ Chain Nonce
+    const elrond    = await factory.inner(Chain.ELROND);    // 2
+    const tron      = await factory.inner(Chain.TRON);      // 9
+    const algorand  = await factory.inner(Chain.ALGORAND);  // 15
+    const tezos     = await factory.inner(Chain.TEZOS);     // 18
+})();
+```
+
+<hr/><br/>
+
+### 5.1 Listing NFTs Owned by the sender.<br/><br/>
+
+This operation does not depend on a wallet since reading operations are free and, therefore, do not require signing.
+<br/>
+
+```javascript
+(async () => {
+  // EVM:
+  const web3Nfts = await factory.nftList(
+    harmony, // The chain of interest
+    "0x...." // The public key of the NFT owner in a web3 chain
+  );
+})();
+```
+
+### 7. Transferring an NFT<br/><br/>
+
+```javascript
+(async () => {
+  // EVM compatible chains example:
+  const web3Result = await factory.transferNft(
+    harmony,        // The Source Chain.
+    polygon,        // The Destination Chain.
+    theChosenOne,   // The NFT object you have chosen from the list.
+    signer,         // The web3 signer object (see p. 3.2 above).
+    "ADDRESS OF THE RECEIVER" // The address whom you are transferring the NFT to.
+  );
+  console.log(web3Result);
+})();
+```
