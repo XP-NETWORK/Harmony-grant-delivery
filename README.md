@@ -144,7 +144,7 @@ https://explorer.testnet.harmony.one/tx/0x628a05dc57869ded05977cbf44e48ce442f752
 |:-:|:-:|:-|
 |1|Smart contracts|1. [Support ERC-721](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/dist/dist/BridgeNFT.d.ts)<br/>2. [Support ERC-1155](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/dist/dist/Erc1155Minter.d.ts)<br/>3. [Freeze/Unfreeze Native NFTs](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/f474704150da557f931e011026d0c033b391bd7a/dist/Minter.d.ts#L160)<br/>4. [Mint/Burn wrapped NFTs](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/f474704150da557f931e011026d0c033b391bd7a/dist/Minter.d.ts#L160)<br/>5. [Pay the TX fees on the target chain in native tokens](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/f474704150da557f931e011026d0c033b391bd7a/dist/Minter.d.ts#L295)<br/>6. [Send / Receive NFTs in batches](https://github.com/XP-NETWORK/XP.network-HECO-Migration/blob/dist/dist/BridgeNFTBatch.d.ts)|
 |2|Integration into Validators|We've added Harmony to the [Validators](https://github.com/XP-NETWORK/migration-validator/search?q=Harmony)|
-|3|Backend Integration|1. [NFT Index](#nft-indexing-for-harmony)<br/>2. TX Fee Estimator<br/>3. Crypto-currency converter|
+|3|Backend Integration|1. [NFT Index](#nft-indexing-for-harmony)<br/>2. [TX Fee Estimator](#fee-estimation-on-harmony)<br/>3. [Crypto-currency converter](#fee-estimation-on-harmony)|
 |4|UI Integration|1. [User Interface](#mainnet-ui-integration)<br/>2. [Wallets (Metamask, WalletConnect)](#wallets-support)|
 
 ## Mainnet UI Integration
@@ -190,3 +190,7 @@ Transaction on Harmony: [0x290e695463e621f46405f3edd8caf4cc70173182c3a35cea1c1f0
 Transaction on Polygon: [0xe8db8d1dd9a5e08798727727b2e17c4242955a5c9f5285b9aafee8247acaec5f](https://polygonscan.com/tx/0xe8db8d1dd9a5e08798727727b2e17c4242955a5c9f5285b9aafee8247acaec5f)
 
 ![Receiving on Polygon](./assets/polygon-receiving.png)
+
+### Fee estimation on Harmony
+
+![Fee estimation](./assets/fee-estimation.jpg)
