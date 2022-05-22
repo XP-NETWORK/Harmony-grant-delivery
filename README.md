@@ -225,7 +225,7 @@ yarn add "git+https://github.com/xp-network/xpjs#bleeding-edge" @elrondnetwork/e
 
 <br/>
 
-### 2. Import the dependencies<br/><br/>
+### 2. Importing the dependencies<br/><br/>
 
 ```javascript
 import {
@@ -280,12 +280,12 @@ import { config } from 'dotenv';
 config();
 // EVM signer for testing in the BE
 const signer = new Wallet(
-        process.env.SK!,
-        // Replace 'polygonParams'
-        // with the relevant parameter
-        // from the table below
-        CONFIG.polygonParams?.provider
-    );
+     process.env.SK!,
+     // Replace 'harmonyParams'
+     // with the relevant parameter
+     // from the table below
+     CONFIG.harmonyParams?.provider
+);
 ```
 
 <center>
