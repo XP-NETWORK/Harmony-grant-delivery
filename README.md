@@ -194,3 +194,9 @@ Transaction on Polygon: [0xe8db8d1dd9a5e08798727727b2e17c4242955a5c9f5285b9aafee
 ### Fee estimation on Harmony
 
 ![Fee estimation](./assets/fee-estimation.jpg)
+
+## Smart Contracts Whitelisted on Harmony 
+
+https://xpnet-whitelisted-api.herokuapp.com/12
+
+https://docs.xp.network/docs/whitelistedv2.0/harmony
